@@ -1,0 +1,25 @@
+.box{
+    border:1px solid black;
+    height:200px;
+    width:250px;
+    background-image: linear-gradient(green, blue);
+    background-image: linear-gradient(to right, green, blue);
+    margin: 10px;
+}
+
+.radial-box{
+    border:1px solid black;
+    height:200px;
+    width:250px;
+    background-image: radial-gradient(green, blue, red);
+    background-image: radial-gradient(yellow 5%, orange 10%, red 50%);
+    margin:10px
+}
+
+.conic-box{
+    border:1px solid black;
+    height:200px;
+    width:250px;
+    background-image: conic-gradient(green, blue, red);
+    margin:10px
+}

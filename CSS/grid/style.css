@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: brown;
+    height: 500px;
+    border:2px solid blue;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.box{
+    background-color: aqua;
+    border: 2px solid black;
+    width: 80px;
+    height: 80px;
+}

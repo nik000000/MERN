@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Us</title>
+        <link rel="shortcut icon" href="./favicon.jpeg"/>
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+    <body>
+        <div id="form-contact-us" ></div>
+        <h2 id="contact-us-h2">Contact Us</h2>
+        
+        <form action="" id="contact-us">
+        <table>
+            
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="name">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" id="name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">Email</label>
+                    </td>
+                    <td>
+                        <input type="email"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Contact">Contact Number</label>
+                    </td>
+                    <td>
+                        <input type="tel"/>
+                    </td>
+                </tr>
+                <!--Gender select-->
+                <tr>
+                    <td>
+                        <label>Gender</label>
+                    </td>
+                    <td>
+                        <select id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!--Date of birth-->
+                <tr>
+                    <td>
+                        <label>Date Of birth</label>
+                    </td>
+                    <td>
+                        <input type="date"/>
+                    </td>
+                </tr>
+
+                <!--Ratings-->
+                <tr>
+                    <td>
+                        <label>Rating</label>
+                    </td>
+                    <td>
+                        <label>1</label>
+                        <input type="radio" name="Rating" value="1"/>
+                        <label>2</label>
+                        <input type="radio" name="Rating" value="2"/>
+                        <label>3</label>
+                        <input type="radio" name="Rating" value="3"/>
+                        <label>4</label>
+                        <input type="radio" name="Rating" value="4"/>
+                        <label>5</label>
+                        <input type="radio" name="Rating" value="5"/>
+                    </td>
+                </tr>
+
+                <!--Feedback-->
+                <tr>
+                    <td>
+                        <label>Feedback</label>
+                    </td>
+                    <td>
+                       <textarea id="feedback_text" rows="6" cols="40" maxlength="250" placeholder="write your feedback here...."></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+    </body>
+</html>
