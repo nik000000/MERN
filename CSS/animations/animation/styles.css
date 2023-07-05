@@ -1,0 +1,50 @@
+.container{
+    width: 100%;
+    height: 212px;
+    background-color: black;
+    border: 2px solid red;
+}
+
+.box{
+    border: 1px solid black;
+    background-color: aqua;
+    height: 212px;
+    width: 212px;
+    
+    animation-name: width-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-timing-function: ease;
+    animation-direction: alternate-reverse;
+    /* animation-fill-mode: both; */
+}
+
+/* @keyframes width-animation{
+   from{
+        width: 200px;
+   }
+   to{
+    width: 800px;
+   }
+} */
+
+
+@keyframes width-animation{
+    0%{
+        width: 212px;
+        background-color: aqua;
+    }
+    30%{
+        width: 35%;
+        background-color: aquamarine;
+    }
+    65%{
+        width: 70%;
+        background-color: blue;
+    }
+    100%{
+        width: 100%;
+        background-color: violet;
+    }
+}
