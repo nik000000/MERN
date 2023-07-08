@@ -1,0 +1,24 @@
+.container{
+    border: 1px solid brown;
+    background-color: yellow;
+    height: 700px;
+    width: 600px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(2, 100px);
+
+    gap: 10px;
+
+    justify-content: start; /*content will start from the left side start*/
+    justify-content: end; /*content will start from the right side end*/
+    justify-content: center; /*content will centered*/
+    justify-content: space-between; /*content will have space between*/
+    justify-content: space-around; /*content will space around them*/
+    justify-content: space-evenly; /*content will have even space manahge*/
+}
+
+.box{
+    border: 1px solid red;
+    background-color: aqua;
+}
