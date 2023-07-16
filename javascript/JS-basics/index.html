@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.js">
+   
+</head>
+<body>
+    <div class="container"></div>
+</body>
+
+    <script>
+        let div = document.createElement('div');
+        const t1 = performance.now();
+        for(let i = 0; i < 100; i++){   
+            let para = document.createElement('p');
+            para.textContent = "paragraph "+i;
+            document.body.appendChild(para);
+        }
+        const t2 = performance.now();
+        console.log("time taken: " + (t2-t1) + "ms");
+
+
+        const t3 = performance.now();
+        for(let i = 0; i < 100; i++){
+            let para = document.createElement('p');
+            para.textContent = "paragraph "+i;
+            div.appendChild(para);
+        }
+
+        document.body.appendChild(div);
+        const t4 = performance.now();
+        console.log("time taken: " + (t4-t3) + "ms");
+
+        const t5 = performance.now();
+        let fragment = document.createDocumentFragment();
+        for(let i = 0; i < 100; i++){
+            let para = document.createElement('p');
+            para.textContent = "paragraph "+i;
+            fragment.appendChild(para);
+        }
+
+        document.body.appendChild(fragment);
+        const t6 = performance.now();
+        console.log("time taken: " + (t6-t5) + "ms");
+    </script>
+</html>

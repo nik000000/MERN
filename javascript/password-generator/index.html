@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password-Generator</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        .data-msg{
+            scale: 0;
+        }
+
+        .check {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            gap: 0 1rem;
+        }
+
+        .check input{
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--vb-cyan);
+            cursor: pointer;
+            position: relative;
+            border-radius: 0.35rem;
+        }
+
+
+        .check input:checked{
+            background-color: var(--vb-cyan);
+        }
+
+
+        .check input:checked::before {
+            content: '✔';
+            position: absolute;
+            color: var(--dk-text);
+            font-size:1.05rem;
+            font-weight: 600;
+            left:50%;
+            top:-10.5px;
+            transform: translateX(-50%)  translateY(40%);
+        }
+
+        .check label {
+            color: var(--pl-white);
+            font-size: 1.25rem;
+            letter-spacing: 0.75px;
+        }
+
+        :root {
+
+            --dk-violet: hsl(268, 75%, 9%);
+            --lt-violet: hsl(268, 47%, 21%);
+            --lt-violet2: hsl(281, 89%, 26%);
+            --vb-violet: hsl(285, 91%, 52%);
+            --vb-violet2: hsl(290, 70%, 36%);
+        
+            --vb-yellow: hsl(52, 100%, 62%);
+        
+        
+            --pl-white: hsl(0, 0%, 100%);
+        
+            --vb-cyan: hsl(176, 100%, 44%);
+            --vb-cyan2: hsl(177, 92%, 70%);
+            --dk-text: hsl(198, 20%, 13%);
+        }
+
+        .slider{
+            appearance: none;
+            width:100%;
+            height: 0.75rem;
+            cursor: pointer;
+            background-color: var(--lt-violet);
+            border-radius: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            background-image: linear-gradient(var(--vb-violet), var(--vb-violet));
+            background-repeat: no-repeat;
+            border:none;
+            outline:none;
+        }
+        .slider::-webkit-slider-thumb {
+            position:relative;
+            z-index:1;
+            appearance: none;
+            height:2rem;
+            width:2rem;
+            border-radius: 50%;
+            background-color: var(--vb-yellow);
+            cursor:pointer;
+            margin-top: -3px;
+            box-shadow: 0px 0px 20px 0px rgba(255, 229, 61, 0.50);
+            transition: all 100ms ease-in;
+        }
+
+        .slider:focus{
+            outline: 3px solid var(--vb-yellow);
+        }
+
+        .slider::-webkit-slider-thumb:hover{
+            outline: 2px solid var(--vb-yellow);
+            background-color: var(--dk-violet);
+            box-shadow: 0px 0px 25px 5px rgba(255, 229, 61, 0.80);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full relative bg-gradient-to-r from-blue-800 to-purple-800 p-7 h-screen items-center justify-center flex text-gray-200">
+        <div class="w-[480px] flex flex-col justify-center items-center  space-y-8">
+            <h1 class="font-sans text-[24px] text-center bg-transparent text-gray-100">Password Generator</h1>
+            <div class="flex justify-between items-center w-full bg-blue-950 p-4 rounded-xl shadow-md shadow-purple-700 h-[70px] gap-3">
+                <!--in-->
+                <input type="text" readonly placeholder="PASSWORD" class="display border-transparent bg-transparent text-[24px] placeholder-yellow-700 w-[400px] h-[40px] font-serif font-extrabold"/>
+                <button copy-btn class="relative flex justify-center">
+                    <span data-copy-message class="data-msg absolute -top-[40px] text-yellow-500 bg-purple-700 rounded-xl p-[5px] transition-all duration-200"></span>
+                    <img src="./assets/copy.svg" alt="" width="23" height="23">
+                </button>
+            </div>
+
+            <div class="relative bg-blue-950 p-8 rounded-xl shadow-sm shadow-purple-500 flex flex-col space-y-3 w-full">
+                <div class="password-length flex justify-between pr-4">
+                    <p>Password Length</p>
+                    <p pass-length-number class=" text-yellow-400">10</p>
+                </div>
+                <!--Slider-->
+                <input type="range" min="1" max="20" class="slider" step="1" data-lengthSlider value="10" style="background-size: 50% 100%;">
+
+
+                <!--check boxes-->
+                <div class="check">
+                    <input type="checkbox"  id="uppercase">
+                    <label for="uppercase">Include Upper Case Letters</label>
+                </div>
+
+                <div class="check">
+                    <input type="checkbox" id="lowercase">
+                    <label for="lowercase">Include lowercase Case Letters</label>
+                </div>
+
+                <div class="check">
+                    <input type="checkbox" id="numbers">
+                    <label for="numbers">Include Numbers</label>
+                </div>
+
+                <div class="check">
+                    <input type="checkbox" id="symbols">
+                    <label for="symbols">Include symbols</label>
+                </div>
+
+                <!--Strength-->
+                <div class="flex justify-between">
+                    <p>Strength</p>
+                    <div id="indicator" data-indicator class="w-[30px] h-[30px] bg-gray-300 rounded-full drop-shadow-2xl shadow-gray-100"></div>
+                </div>
+
+                <!--Button generate password-->
+                <button class="generate-btn text-yellow-100 border m-2 p-2 rounded-md w-[400px] bg-purple-600 border-purple-400 shadow-lg shadow-yellow-600" >Generate Passwrod</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const slider = document.querySelector("[data-lengthSlider]");
+        let passNumber = document.querySelector("[pass-length-number]");
+        let generatePass = document.querySelector(".generate-btn");
+        let pass = document.querySelector(".display");
+        let uppercase = document.querySelector("#uppercase");
+        let lowercase = document.querySelector("#lowercase");
+        let numbers = document.querySelector("#numbers");
+        let symbols = document.querySelector("#symbols");
+        const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+        const numberChars = '0123456789';
+        const symbolChars = '!@#$%^&*()';
+        let copyMsg = document.querySelector("[data-copy-message]");
+        let copyBtn = document.querySelector("[copy-btn]");
+        let chars = '';
+        let dataIndicator = document.querySelector("[data-indicator]");
+
+        console.log(pass);
+
+        function handleSlider(){
+            passNumber.textContent = slider.value;
+            //or kuch bhi karna chahiye ? - HW
+            const min = slider.min;
+            const max = slider.max;
+            console.log(max +" "+min);
+            console.log(slider.value );
+            slider.style.backgroundSize = ( (parseInt(slider.value) - min)*100/(max - min)) + "% 100%"
+        }
+
+        function generateRandomChars(length) {
+            let result = '';
+            console.log(chars);
+            
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                result += chars.charAt(randomIndex);
+            }
+            
+            return result;
+        }
+
+        copyBtn.addEventListener("click", copyContent);
+
+        slider.addEventListener("input", handleSlider);
+
+        function setIndicator(color){
+            dataIndicator.style.backgroundColor = color;
+        }
+
+        function calStrength(){
+            let hasUpper = false;
+            let hasLower = false;
+            let hasNum = false;
+            let hasSym = false;
+
+            if(uppercase.checked){
+                hasUpper = true;
+            }
+
+            if(lowercase.checked){
+                hasLower = true;
+            }
+
+            if(numbers.checked){
+                hasNum = true;
+            }
+
+            if(symbols.checked){
+                hasSym = true;
+            }
+            let passwordLength = slider.value;
+            if(hasUpper && hasLower && (hasNum || hasSym) && passwordLength >= 8){
+                setIndicator("#0f0");
+            }else if((hasLower || hasUpper) && (hasNum || hasSym) && passwordLength >= 6){
+                setIndicator("#ff0");
+            }else{
+                setIndicator("#f00");
+            }
+        }
+
+
+        async function copyContent(){
+            console.log("copying");
+            try{
+                await navigator.clipboard.writeText(pass.value);
+                copyMsg.innerText = 'copied';
+                
+            }catch(e){
+                copyMsg.innerText = "failed";
+            }
+            copyMsg.style.scale = 1;
+            setTimeout(() => {
+                copyMsg.style.scale = 0;
+
+            }, 2000);
+
+            console.log("copied");
+        }
+
+        generatePass.addEventListener('click', () => {
+            chars = '';
+            let checkCount = 0;
+            if(uppercase.checked){
+                chars += uppercaseChars;
+                checkCount+=1;
+            }
+
+            if(lowercase.checked){
+                chars += lowercaseChars;
+                checkCount+=1;
+            }
+
+            if(numbers.checked){
+                chars += numberChars;
+                checkCount+=1;
+            }
+
+            if(symbols.checked){
+                chars += symbolChars;
+                checkCount+=1;
+            }
+
+            if(slider.value < checkCount){
+                slider.value = checkCount;
+                handleSlider();
+            }
+
+            if(chars == ''){
+                chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            }
+
+            calStrength();
+            
+            let password = generateRandomChars(slider.value);
+            pass.value = password;
+        });
+    </script>
+</body>
+</html>

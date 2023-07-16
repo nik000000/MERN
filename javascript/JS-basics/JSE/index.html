@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="q1">Click Me!!</button>
+    <p id="para">Hello I am para</p>
+    <div id="box1" class="highlight" style="width:100px; height: 100px; background-color: red;"></div>
+    <script>
+        let button = document.querySelector("#q1");
+
+        button.addEventListener('click', ()=>{
+            let text = button.textContent;
+            if(text === "Click Me!!"){
+                button.textContent = "Clicked!!";
+            }else{
+                button.textContent = "Click Me!!";
+            }
+        });
+
+        let para = document.querySelector("#para");
+
+        para.addEventListener('mouseover', ()=>{
+
+            if(para.style.color === "red"){
+                para.style.color = "black";
+            }else{
+                para.style.color = "red";
+            }
+        });
+
+        let div = document.querySelector("#box1");
+        div.addEventListener("click", () => {
+            if(div.style.display == "inline"){
+                div.style.display = "block";
+            }else{
+                div.style.display = "inline";
+            }
+        });
+    </script>
+</body>
+</html>
