@@ -8,12 +8,16 @@ const searchForm = document.querySelector('[data-searchForm]');
 const loadingScreen = document.querySelector('.loding-container');
 const userInfoContainer = document.querySelector('.info-container');
 const grantAccessButton = document.querySelector("[data-grantAccess]");
-
-
 const apiKey = "699b6d4969df449fae8185719231607";
+
+const localCoordinates = sessionStorage.getItem("user-coordinates");
 let currentTab = userTab;
 currentTab.classList.add("current-tab");
 
+
+if(!localCoordinates){
+    grantLocationContainer.classList.add("active");
+}
 
 function switchTab(clickedTab){
     if(clickedTab != currentTab){
@@ -25,6 +29,7 @@ function switchTab(clickedTab){
         if(!searchForm.classList.contains("active")){
             userInfoContainer.classList.remove("active");
             searchForm.classList.add("active");
+            grantLocationContainer.classList.remove("active");
         }else{
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
@@ -128,7 +133,6 @@ let searchInput = document.querySelector('[data-searchInput]');
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if(searchInput.value === "") return;
-
     fetchSearchWeatherInfo(searchInput.value);
 });
 

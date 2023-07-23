@@ -24,6 +24,11 @@ form-container.active{
     all: unset;
 }
 
+
+.grant-location-container{
+    display: none;
+}
+
 .grant-location-container.active{
     display: flex;
     flex-direction: column;
@@ -75,3 +80,5 @@ form-container.active{
     justify-content: center;
     gap: 5px;
 }
+
+
