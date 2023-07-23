@@ -1,0 +1,77 @@
+.search-img{
+    background: transparent;
+}
+
+.current-tab{
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 4px;
+}
+
+
+form-container.active{
+    scale: 1;
+}
+
+
+.wrapper{
+    height: 100vh;
+    width: 100vW;
+    color: rgb(242, 235, 235);
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+}
+
+.btn{
+    all: unset;
+}
+
+.grant-location-container.active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.loding-container.active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-container{
+    display: none;
+}
+
+.info-container.active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.name{
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.name p{
+    font-size:2rem;
+}
+
+.name img{
+    width: 30px;
+    height: 30px;
+}
+
+.form-container{
+    display: none;
+}
+
+.form-container.active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

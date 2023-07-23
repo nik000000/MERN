@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="wrapper overflow-x-hidden">
+        <h1 class="text-center uppercase pt-4 text-[24px] ">Weather App</h1>
+        <div class="tab-container flex justify-between max-w-[550px] m-auto w-[90%] mt-[4rem]">
+            <p class="tab cursor-pointer text-[0.9rem] tracking-[1.75px] py-[5px] px-[8px]" data-userWeather>Your Weather</p>
+            <p class="tab cursor-pointer text-[0.9rem] tracking-[1.75px] py-[5px] px-[8px]" data-searchTab>Search Weather</p>
+        </div>
+    
+
+        <div class="weather-container flex flex-col justify-center items-center mt-[4rem] mb-[4rem] gap-2">
+            <!--Grant location container-->
+            <div class="grant-location-container hidden">
+                <img src="./assets/map.png" width="80" height="80" loading="lazy" class="bg-inherit inline-block" alt="">
+                <p class="text-[24px] text-center font-[600]">Grant Location Access</p>
+                <p class="text-[20px] text-center font-[600]">Allow access to get weather information</p>
+                <button class="btn pt-[10px] pb-[10px] pl-[30px] pr-[30px] border rounded-md border-black bg-blue-900 cursor-pointer" data-grantAccess>Grant Access</button>
+            </div>
+
+
+            <!--Search weather api-->
+            <form action="" data-searchForm class="form-container">
+                <input type="text" placeholder="Search for city..." data-searchInput class="text-gray-800 h-[30px] w-[300px] bg-blue-50 rounded-md p-2 focus:outline-3">
+                <button type="submit" class="btn bg-inherit">
+                    <img src="./assets/search-1.png" alt="" loading="lazy" class="search-img bg-inherit cursor-pointer w-[30px] h-[30px] rounded-md">
+                </button>
+            </form>
+
+            <!--Loading screen container-->
+            <div class="loding-container hidden">
+                <img src="./assets/spinner.gif" alt="" width="150" height="150">
+                <p class="uppercase">Loading</p>
+            </div>
+
+            <!--show weather info container-->
+            <div class="info-container mt-[30px] overflow-hidden w-[700px]">
+                <!--City name and flag-->
+                <div class="name">
+                    <p data-cityName></p>
+                    <img src="" alt="" data-countryIcon>
+                </div>
+                <!--Weather description-->
+                <p data-weatherDescription class="font-[1.5rem]"></p>
+                <img src="" alt="" data-weatherIcon class="w-[90px] h-[90px]">
+                <p data-temp class="text-[24px]"></p>
+
+                <!--Cards-->
+                <div class="w-full flex gap-2 mt-10 overflow-hidden justify-center pl-28">
+                    <!--Card1-->
+                    <div class="card flex flex-col items-center w-full min-h-[15rem] relative cursor-pointer hover:drop-shadow-xl group transition-all duration-200">
+                        <img width="64" height="64" src="./assets/wind.png" alt="external-weather-weather-color-outline-adri-ansyah-63"
+                        class="absolute z-10 top-1"/>
+                        <p class="absolute z-10 top-[80px]">Wind Speed</p>
+                        <p data-windSpeed class="absolute z-10 top-[100px] pt-2"></p>
+                        <svg
+                            viewBox="0 0 349.32501220703125 225"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            class="stroke-1 stroke-[#818597] h-[150px] w-[150px] absolute z-[9] transition-all duration-200"
+                            style="stroke-opacity: 0.15"
+                            >
+                            <path
+                                d="m 0 6 
+                                a 6 6 0 0 1 6 -6 
+                                h 250.32501220703125 
+                                a 16 16 0 0 1 11 5 
+                                l 77 77 
+                                a 16 16 0 0 1 5 11 
+                                v 126 
+                                a 6 6 0 0 1 -6 6 
+                                h -337.32501220703125 
+                                a 6 6 0 0 1 -6 -6 
+                                z"
+                                    fill="#112d4e"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <!--Card2-->
+                    <div class="card w-full flex flex-col items-center min-h-[15rem] relative cursor-pointer hover:drop-shadow-xl group transition-all duration-200">
+                        <img width="64" height="64" src="./assets/drop.png" alt="external-weather-weather-color-outline-adri-ansyah-63"
+                        class="absolute z-10 top-1 "/>
+                        <p class="absolute z-10 top-[80px] ">Humidity</p>
+                        <p data-humidity class="absolute z-10 top-[100px] pt-2"></p>
+                        <svg
+                            viewBox="0 0 349.32501220703125 225"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            class="stroke-1 stroke-[#818597] h-[150px] w-[150px] absolute z-[9] transition-all duration-200"
+                            style="stroke-opacity: 0.15"
+                            >
+                            <path
+                                d="m 0 6 
+                                a 6 6 0 0 1 6 -6 
+                                h 250.32501220703125 
+                                a 16 16 0 0 1 11 5 
+                                l 77 77 
+                                a 16 16 0 0 1 5 11 
+                                v 126 
+                                a 6 6 0 0 1 -6 6 
+                                h -337.32501220703125 
+                                a 6 6 0 0 1 -6 -6 
+                                z"
+                                    fill="#112d4e"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <!--Card3-->
+                    <div class="card w-full min-h-[15rem] flex flex-col items-center relative cursor-pointer hover:drop-shadow-xl group transition-all duration-200">
+                        <img width="64" height="64" src="./assets/cloudy.png" alt="" class="absolute z-10 top-1 "/>
+                        <p class="absolute z-10 top-[80px] ">Clouds</p>
+                        <p data-clouds class="absolute z-10 top-[100px] pt-2"></p>
+                        <svg
+                            viewBox="0 0 349.32501220703125 225"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            class="stroke-1 stroke-[#818597] h-[150px] w-[150px] absolute z-[9] transition-all duration-200"
+                            style="stroke-opacity: 0.15"
+                            >
+                            <path
+                                d="m 0 6 
+                                a 6 6 0 0 1 6 -6 
+                                h 250.32501220703125 
+                                a 16 16 0 0 1 11 5 
+                                l 77 77 
+                                a 16 16 0 0 1 5 11 
+                                v 126 
+                                a 6 6 0 0 1 -6 6 
+                                h -337.32501220703125 
+                                a 6 6 0 0 1 -6 -6 
+                                z"
+                                    fill="#112d4e"
+                            ></path>
+                        </svg>
+                    </div>
+                </div>
+        </div>
+
+        
+
+
+       
+    </div>
+</div>
+    
+    
+<script src="index.js" type="module"></script>
+</body>
+</html>
