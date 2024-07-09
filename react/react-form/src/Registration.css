@@ -1,0 +1,39 @@
+.input{
+    padding: 0.5rem;
+    border: 1px solid rgb(225, 223, 223);
+    border-radius: 5px;
+}
+
+.field{
+    display:flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label{
+    color: rgb(19, 27, 47);
+    font-size: medium;
+    font-weight:400;
+}
+
+.checkbox{
+    display: flex;
+    gap: 0.5rem;
+    align-items:first baseline;
+}
+
+.radio{
+    display: flex;
+    gap:0.5rem;
+}
+
+.check-para{
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+.radio-label{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}

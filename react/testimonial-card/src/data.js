@@ -1,4 +1,4 @@
-const reviews = [
+export const reviews = [
   {
     id: 1,
     name: "Pranay Gupta",
@@ -35,5 +35,3 @@ const reviews = [
     text: "I had the opportunity to work with this team on a data analysis project, and I was impressed with their attention to detail and their ability to work with complex datasets. They provided valuable insights that helped us make informed business decisions. It was a pleasure working with them.",
   },
 ];
-
-export default reviews;
